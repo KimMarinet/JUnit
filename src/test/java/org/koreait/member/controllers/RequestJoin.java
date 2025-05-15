@@ -3,7 +3,7 @@ package org.koreait.member.controllers;
 import lombok.Data;
 
 @Data
-public class RequsetJoin {
+public class RequestJoin {
     private String email;
     private String password;
 }

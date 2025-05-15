@@ -1,14 +1,16 @@
 package org.koreait.member.services;
 
-import org.koreait.global.validators.RequiredFieldValidator;
-import org.koreait.member.controllers.RequsetJoin;
+import org.koreait.member.controllers.RequestJoin;
+import org.koreait.member.validators.JoinValidator;
 
-public class JoinService implements RequiredFieldValidator {
-    public void process(RequsetJoin form){
-        String email = form.getEmail();
-//        if(email == null || email.isBlank()){
-//            throw new BadRequestException("이메일을 입력하세요.");
-//        }
-        checkString(email, "이메일을 입력하세요.");
+public class JoinService{
+    private JoinValidator validator;
+
+    public JoinService(JoinValidator validator) {
+        this.validator = validator;
+    }
+
+    public void process(RequestJoin form){
+        validator.check(form);
     }
 }
